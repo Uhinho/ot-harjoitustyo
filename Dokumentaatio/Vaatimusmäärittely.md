@@ -10,3 +10,9 @@ Sovellusta käytetään tutkimaan ja vertailemaan myynnissä olevien asuntojen k
 - Käyttäjän tallentamat tiedot talletetaan paikalliselle kovalevylle
 
 Toimintoympäristön osalta vaatimuksena on toimivuus Linux käyttöjärjestelmällä. 
+
+### Jatkokehitys
+
+- Sovellukseen sisällytettävä kartta jota voi käyttää alueiden selaukseen
+- Tarkemmat suodatusmahdollisuudet esim. asunnon koon suhteen
+
