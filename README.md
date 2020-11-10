@@ -1,7 +1,8 @@
-#Tämä on README
+# Asunto Tracker
 
-*Tässä nähdään kursivoitua tekstiä*
-_Ehkä myös tässä_
+Kurssin harjoitustyön tarkoitus on helpottaa asuntojen keskimääräisten neliöhintojen tutkimista aluekohtaisesti. 
+Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asuntojen keskimääräistä neliöhintaa ja tarkastella kilpailukykyisesti hinnoiteltuja myynnissä olevia asuntoja. 
 
-__Lihavointia__
-**Lihavointia toiseen tapaan**
+## Dokumentaatio
+
+[Vaatimusmäärittely](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Vaatimusm%C3%A4%C3%A4rittely.md)
