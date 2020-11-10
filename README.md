@@ -6,4 +6,5 @@ Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asun
 ## Dokumentaatio
 
 [Vaatimusmäärittely](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Vaatimusm%C3%A4%C3%A4rittely.md)
+
 [Tuntikirjanpito](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Tuntikirjanpito.md)
