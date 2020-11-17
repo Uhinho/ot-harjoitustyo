@@ -1,6 +1,9 @@
 
 package atracker;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class Apartment {
     private String city;
     private String part;
@@ -14,6 +17,7 @@ public class Apartment {
         this.address = address;
         this.price = price;
         this.size = size;
+        
     }
 
 
@@ -30,6 +34,7 @@ public class Apartment {
     }
 
     public double getPrice() {
+        
         return price;
     }
 
@@ -39,7 +44,8 @@ public class Apartment {
 
     @Override
     public String toString() {
-        return "Apartment{" + "city=" + city + ", part=" + part + ", address=" + address + ", price=" + price + ", size=" + size + '}';
+        DecimalFormat df = new DecimalFormat("#.##");
+        return city + ", " + part + ", " + address + ", " + df.format(size) + "m2, " + df.format(price) + "€";
     }
 
 
