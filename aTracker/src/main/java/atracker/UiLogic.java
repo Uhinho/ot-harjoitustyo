@@ -59,11 +59,19 @@ public class UiLogic {
             String address = listingElement.select("h4").text();
             double price = Double.valueOf(priceElement.select("h6 + span").text().replace("€", "").replace(",", ".").replaceAll("\\s", ""));
             double size = Double.valueOf(sizeElement.select("h6 + span").text().replace("m²", "").replace(",", ".").replaceAll("\\s", ""));
-       
-            String[] spliced = address.split(", ");
-            String street = spliced[0];
-            String part = spliced[1];
-            String city = spliced[2];
+            
+            String[] spliced = address.split(",");
+            String street = spliced[0].trim();
+            String part;
+            String city;
+                if(spliced.length < 3){
+                    part = "-";
+                    city = spliced[1].trim();
+                }else{
+                    part = spliced[1].trim();
+                    city = spliced[2].trim();   
+                }
+                
             
             
             Apartment apartment = new Apartment(city,part,street,price,size);
