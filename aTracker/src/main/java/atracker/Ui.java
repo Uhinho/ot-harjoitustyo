@@ -21,7 +21,7 @@ public class Ui extends UiLogic{
         System.out.println("PLEASE ENTER CITY: ");
         String city = scanner.nextLine();
         
-        System.out.println("AVERAGE PRICE: " + df.format(logic.getAvgPrice(city)) + "€");
+        System.out.println("AVERAGE PRICE PER SQUARE METER IN " + city.toUpperCase() + ": " + df.format(logic.getAvgPrice(city)) + "€");
         
     }
     

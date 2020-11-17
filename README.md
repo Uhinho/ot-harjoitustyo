@@ -8,3 +8,22 @@ Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asun
 [Vaatimusmäärittely](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Vaatimusm%C3%A4%C3%A4rittely.md)
 
 [Tuntikirjanpito](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Tuntikirjanpito.md)
+
+## Komentorivi
+
+### Testaus
+
+Testit suoritetaan komennolla
+> mvn test
+
+Testikattavuusraportin luomisessa käytetään jacocoa. Raportti luodaan komennolla
+> mvn jacoco:report
+
+Jacoco luo selaimella avattavan html-tiedoston, joka löytyy hakemistosta  *target/site/jacoco/index.html*
+
+## Huomioita
+Ensimmäinen versio toimii yksinkertaisella tekstikäyttöliittymällä, joka kysyy kaupungin nimeä, jonka asuntojen
+keskimääräisen neliöhinnan käyttäjä haluaa hakea.
+Käyttäjän syötettyä kaupungin nimen, ohjelma tulostaa keskimääräisen neliöhinnan Etuovi.comista löytyvien ilmoitusten perusteella. 
+
+

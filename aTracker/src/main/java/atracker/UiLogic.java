@@ -30,11 +30,6 @@ public class UiLogic {
         Document document;
         
             try {
-                Connection.Response response = Jsoup.connect("https://www.etuovi.com/myytavat-asunnot/vaasa?haku=M1570059203&sivu=2")
-                                                .method(Connection.Method.GET)
-                                                .followRedirects(true)
-                                                .execute();
-                System.out.println(response.header("Filename"));
                 document = Jsoup.connect(url).get();
 
             }
@@ -82,13 +77,19 @@ public class UiLogic {
         ArrayList<Apartment> results = this.getResults(search);
         
         
-        double sum = 0;
+        double sumOfPrice = 0;
+        double sumOfM = 0;
+        
         
         for(Apartment a: results){
-            sum += a.getPrice();
+            double price = a.getPrice();
+            double size = a.getSize();
+            
+            sumOfPrice += price;
+            sumOfM += size;
         }
         
-        double avg = sum / results.size();
+        double avg = sumOfPrice / sumOfM;
         
         
         return avg;
