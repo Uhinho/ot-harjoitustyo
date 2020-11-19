@@ -10,13 +10,15 @@ public class Apartment {
     private String address;
     private double price;
     private double size;
+    private int yearBuilt;
 
-    public Apartment(String city, String part, String address, double price, double size) {
+    public Apartment(String city, String part, String address, double price, double size, int yearBuilt) {
         this.city = city;
         this.part = part;
         this.address = address;
         this.price = price;
         this.size = size;
+        this.yearBuilt = yearBuilt;
         
     }
 
@@ -41,11 +43,15 @@ public class Apartment {
     public double getSize() {
         return size;
     }
+    
+    public int getYearBuilt(){
+        return yearBuilt;
+    }
 
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("#.##");
-        return city + ", " + part + ", " + address + ", " + df.format(size) + "m2, " + df.format(price) + "€";
+        return city + ", " + part + ", " + address + ", " + df.format(size) + "m2, " + df.format(price) + "€, " + this.yearBuilt;
     }
 
 

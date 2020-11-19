@@ -32,7 +32,7 @@ public class apartmentTest {
 
     @Test
     public void apartmentConstructor(){
-        Apartment randomApartment = new Apartment("New York", "Brooklyn", "Brooklyn Drive 1", 200, 200);
-        assertEquals("New York, Brooklyn, Brooklyn Drive 1, 200m2, 200€", randomApartment.toString());
+        Apartment randomApartment = new Apartment("New York", "Brooklyn", "Brooklyn Drive 1", 200, 200,2000);
+        assertEquals("New York, Brooklyn, Brooklyn Drive 1, 200m2, 200€, 2000", randomApartment.toString());
     }
 }
