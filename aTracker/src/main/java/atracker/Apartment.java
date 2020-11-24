@@ -44,7 +44,7 @@ public class Apartment {
         return size;
     }
     
-    public int getYearBuilt(){
+    public int getYearBuilt() {
         return yearBuilt;
     }
 
