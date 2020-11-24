@@ -21,9 +21,13 @@ Testikattavuusraportin luomisessa käytetään jacocoa. Raportti luodaan komenno
 
 Jacoco luo selaimella avattavan html-tiedoston, joka löytyy hakemistosta  *target/site/jacoco/index.html*
 
+Checkstyle raportin voit luoda komennolla
+> mvn jxr:jxr checkstyle:checkstyle
+
+
 ## Huomioita
 Ensimmäinen versio toimii yksinkertaisella tekstikäyttöliittymällä, joka kysyy kaupungin nimeä, jonka asuntojen
 keskimääräisen neliöhinnan käyttäjä haluaa hakea.
-Käyttäjän syötettyä kaupungin nimen, ohjelma tulostaa keskimääräisen neliöhinnan Etuovi.comista löytyvien ilmoitusten perusteella. 
+Käyttäjän syötettyä kaupungin nimen, ohjelma lisää löydetyt asuntoilmoitukset SQLite-tietokantaan ja palauttaa tietokannasta lasketun keskimääräisen neliöhinnan.
 
 
