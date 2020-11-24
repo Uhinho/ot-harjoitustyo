@@ -28,6 +28,7 @@ Checkstyle raportin voit luoda komennolla
 ## Huomioita
 Ensimmäinen versio toimii yksinkertaisella tekstikäyttöliittymällä, joka kysyy kaupungin nimeä, jonka asuntojen
 keskimääräisen neliöhinnan käyttäjä haluaa hakea.
+Ohjelman käynnistyttyä ohjelma luo juurikansioon SQLite-tietokannan data.db
 Käyttäjän syötettyä kaupungin nimen, ohjelma lisää löydetyt asuntoilmoitukset SQLite-tietokantaan ja palauttaa tietokannasta lasketun keskimääräisen neliöhinnan.
 
 
