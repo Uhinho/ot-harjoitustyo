@@ -9,6 +9,8 @@ Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asun
 
 [Tuntikirjanpito](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Tuntikirjanpito.md)
 
+[Release](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/viikko5)
+
 ## Komentorivi
 
 ### Testaus
@@ -24,10 +26,12 @@ Jacoco luo selaimella avattavan html-tiedoston, joka löytyy hakemistosta  *targ
 Checkstyle raportin voit luoda komennolla
 > mvn jxr:jxr checkstyle:checkstyle
 
+Ladattavan releasen voi käynnistää komentoriviltä
+> java -jar aTracker.jar
+
 
 ## Huomioita
-Ensimmäinen versio toimii yksinkertaisella tekstikäyttöliittymällä, joka kysyy kaupungin nimeä, jonka asuntojen
-keskimääräisen neliöhinnan käyttäjä haluaa hakea.
+Ensimmäinen versio toimii yksinkertaisella tekstikäyttöliittymällä.
 Ohjelman käynnistyttyä ohjelma luo juurikansioon SQLite-tietokannan data.db
 Käyttäjän syötettyä kaupungin nimen, ohjelma lisää löydetyt asuntoilmoitukset SQLite-tietokantaan ja palauttaa tietokannasta lasketun keskimääräisen neliöhinnan.
 
