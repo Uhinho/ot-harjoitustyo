@@ -9,7 +9,7 @@ Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asun
 
 [Tuntikirjanpito](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Tuntikirjanpito.md)
 
-[Arkkitehtuuri](https://github.com/https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Arkkitehtuuri.md)
+[Arkkitehtuuri](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Arkkitehtuuri.md)
 
 [Release](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/viikko5)
 
