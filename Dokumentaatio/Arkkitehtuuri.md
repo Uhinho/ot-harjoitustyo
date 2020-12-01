@@ -8,11 +8,10 @@ Tekstikäyttöliittymä, jossa käyttäjä voi
 ##Sovelluslogiikka
 Sovelluksen datamallin muodostavat luokat Database ja Apartment, jotka kuvaavat tietokantaa ja yksittäisen asuntoilmoituksen yksityiskohtia.
 
-![](/luokkakaavio.png)
+![](luokkakaavio.png)
 
 
 ##Päätoiminnallisuudet
 
-###Ilmoitusten haku
-Datan lisääminen tietokantaan
-![](/sekvenssikaavio.png)
+###Ilmoitusten haku ja lisääminen tietokantaan
+![](sekvenssikaavio.png)
