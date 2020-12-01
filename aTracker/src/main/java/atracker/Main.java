@@ -1,4 +1,3 @@
-
 package atracker;
 
 import java.sql.SQLException;

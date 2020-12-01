@@ -1,5 +1,6 @@
 package atracker;
 
+import logic.UiLogic;
 import database.Database;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -60,13 +61,5 @@ public class DatabaseTest {
         assertTrue(exists);
     }
     
-    @Test
-    public void dataIsAdded() throws SQLException{
-        UiLogic ul = new UiLogic();
-        ul.getResults("Kemi");
-        
-        assertTrue(db.cityExists("Kemi"));
-        
-    }
     
 }

@@ -1,11 +1,10 @@
 
 package database;
 
-import atracker.Apartment;
+import logic.Apartment;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import org.sqlite.util.StringUtils;
-
 
 public class Database {
     
@@ -18,7 +17,7 @@ public class Database {
         this.created = false;
     }
     
-     private Connection connect() {
+    private Connection connect() {
         Connection conn = null;
         
         try {
@@ -31,20 +30,7 @@ public class Database {
     }
     
     public void init() throws ClassNotFoundException {
-
-        try {
-            Class.forName("org.sqlite.JDBC");
-            conn = this.connect();
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-        }
-        
-        this.createTable(url); 
-    }
-    
-    private void createTable(String url) {
-        if (!created) {
-            String sql = "CREATE TABLE IF NOT EXISTS apartments ("
+        String mainTable = "CREATE TABLE IF NOT EXISTS apartments ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "city TEXT,"
                     + "part TEXT,"
@@ -53,11 +39,22 @@ public class Database {
                     + "size REAL,"
                     + "yearbuilt INTEGER"
                     + ");";
-
-            this.createStatement(sql);
-            this.created = true;
-        }
         
+        String resultTable = "CREATE TABLE IF NOT EXISTS results ("
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "city TEXT,"
+                    + "mprice REAL"
+                    + ");";
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = this.connect();
+            this.createStatement(mainTable);
+            this.createStatement(resultTable);
+            conn.close();
+            
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        }
     }
     
     public void dropTable(String tablename) {
@@ -68,7 +65,7 @@ public class Database {
         
     }
     
-    public void insertToTable(String city, String part, String address, double price, double size, int yearBuilt) throws SQLException {
+    public void insertToMainTable(String city, String part, String address, double price, double size, int yearBuilt) throws SQLException {
         String sql = "INSERT INTO apartments(city,part,address,price,size,yearbuilt) VALUES (?,?,?,?,?,?)";
         
         try {
@@ -83,9 +80,25 @@ public class Database {
             pstmt.setInt(6, yearBuilt);
             
             pstmt.executeUpdate();
-        } catch(SQLException e) {
+            conn.close();
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }    
+    }
+    
+    public void insertToResultTable(String city, double price) {
+        String sql = "INSERT INTO results(city,mprice) VALUES (?,?)";
+        
+        try {
+            Connection conn = this.connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, city);
+            pstmt.setDouble(2, price);
+            pstmt.executeUpdate();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
     
     public void createStatement(String statement) {
@@ -93,8 +106,9 @@ public class Database {
         try {
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
-            stmt.execute(statement); 
-        } catch (Exception e){
+            stmt.execute(statement);
+            conn.close();
+        } catch (Exception e) {
             System.out.println(e.getClass().getName() + ": " + e.getMessage());
         }
     }
@@ -109,22 +123,44 @@ public class Database {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, city);
             ResultSet rs = stmt.executeQuery();
-           
-            while(rs.next()) {
+            
+            while (rs.next()) {
                 Apartment ap = new Apartment(rs.getString("city"), rs.getString("part"), rs.getString("address"), rs.getDouble("price"), rs.getDouble("size"), rs.getInt("yearbuilt"));
                 list.add(ap);
             }
-           
+            conn.close();
         } catch (SQLException e) {
-           System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
        
         return list;
     }
     
-    public boolean cityExists(String city) {
+    public void printResults() throws SQLException {
+        String sql = "SELECT * FROM results ORDER BY city";
+        DecimalFormat df = new DecimalFormat("#.##");
+        
+        try {
+            Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            System.out.println("Your previous searches: ");
+            while (rs.next()) {
+                System.out.println(rs.getString(2) + ": " + df.format(rs.getDouble(3)) + " €/m2");
+            }
+            conn.close();
+                
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
+    }
+    
+    public boolean cityExists(String table, String city) {
         boolean exists = false;
-        String sql = "SELECT * FROM apartments WHERE city = ?";
+        String sql = String.format("SELECT * FROM %s WHERE city = ?", table);
         
         try {
             Connection conn = this.connect();
@@ -134,6 +170,7 @@ public class Database {
             if (rs.next() == true) {
                 exists = true;
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

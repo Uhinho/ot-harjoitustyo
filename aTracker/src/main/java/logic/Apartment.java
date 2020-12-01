@@ -1,8 +1,7 @@
 
-package atracker;
+package logic;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class Apartment {
     private String city;
@@ -19,7 +18,6 @@ public class Apartment {
         this.price = price;
         this.size = size;
         this.yearBuilt = yearBuilt;
-        
     }
 
 
