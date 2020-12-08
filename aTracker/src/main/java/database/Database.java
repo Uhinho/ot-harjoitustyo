@@ -29,7 +29,7 @@ public class Database {
         return conn;
     }
     
-    public void init() throws ClassNotFoundException {
+    public void init() throws ClassNotFoundException, SQLException {
         String mainTable = "CREATE TABLE IF NOT EXISTS apartments ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "city TEXT,"
@@ -51,18 +51,15 @@ public class Database {
             this.createStatement(mainTable);
             this.createStatement(resultTable);
             conn.close();
-            
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
-        }
+        }   
     }
     
-    public void dropTable(String tablename) {
+    public void dropTable(String tablename) throws SQLException {
         String sql = "DROP TABLE IF EXISTS " + tablename + ";";
         
         this.createStatement(sql);
-        
-        
     }
     
     public void insertToMainTable(String city, String part, String address, double price, double size, int yearBuilt) throws SQLException {
@@ -81,12 +78,14 @@ public class Database {
             
             pstmt.executeUpdate();
             conn.close();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }    
+        }   
+        
     }
     
-    public void insertToResultTable(String city, double price) {
+    public void insertToResultTable(String city, double price) throws SQLException {
         String sql = "INSERT INTO results(city,mprice) VALUES (?,?)";
         
         try {
@@ -96,28 +95,28 @@ public class Database {
             pstmt.setDouble(2, price);
             pstmt.executeUpdate();
             conn.close();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
     }
     
-    public void createStatement(String statement) {
+    public void createStatement(String statement) throws SQLException {
         
         try {
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             stmt.execute(statement);
-            conn.close();
+            conn.close();   
         } catch (Exception e) {
             System.out.println(e.getClass().getName() + ": " + e.getMessage());
-        }
+        }  
     }
     
-    public ArrayList<Apartment> getCityFromDb(String city) {
+    public ArrayList<Apartment> getCityFromDb(String city) throws SQLException {
         String sql = "SELECT * FROM apartments WHERE city = ?";
         ArrayList<Apartment> list = new ArrayList<>();
-       
-       
         try {
             Connection conn = this.connect();
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -129,10 +128,11 @@ public class Database {
                 list.add(ap);
             }
             conn.close();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-       
+        
         return list;
     }
     
@@ -144,8 +144,8 @@ public class Database {
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            
-            System.out.println("Your previous searches: ");
+                  
+            System.out.println("\nYour previous searches:\n");
             while (rs.next()) {
                 System.out.println(rs.getString(2) + ": " + df.format(rs.getDouble(3)) + " €/m2");
             }
@@ -153,9 +153,7 @@ public class Database {
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }
-        
-        
+        }  
     }
     
     public boolean cityExists(String table, String city) {
@@ -167,24 +165,35 @@ public class Database {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, city);
             ResultSet rs = stmt.executeQuery();
-            if (rs.next() == true) {
+            if (rs.next()) {
                 exists = true;
+                
             }
             conn.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        
         return exists;
     }
+    
+    public boolean emptyTable(String tablename) throws SQLException {
+        String sql = String.format("SELECT COUNT (*) AS total FROM %s", tablename);
         
+        try {
+            Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            int count = rs.getInt("total");
+            conn.close();
+            if (count == 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
         
-   
+        return false;
+    }
         
-    
-    
-    
-    
-    
-
 }

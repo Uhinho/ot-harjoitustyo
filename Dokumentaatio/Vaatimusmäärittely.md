@@ -9,6 +9,7 @@ Sovellusta käytetään tutkimaan ja vertailemaan myynnissä olevien asuntojen k
 - Käyttäjä voi merkitä muistiin kiinnostavat kohteet
 - Käyttäjä näkee hakuhistoriansa ja jo etsittyjen kaupunkien keskimääräiset neliöhinnat **tehty**
 - Käyttäjän tallentamat tiedot talletetaan paikalliselle kovalevylle **tehty**
+- Käyttäjä voi hakea tarkan neliöhinnan kaupunginosan perusteella. **tehty**
 
 Toimintoympäristön osalta vaatimuksena on toimivuus Linux käyttöjärjestelmällä. 
 

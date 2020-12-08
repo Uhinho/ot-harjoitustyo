@@ -38,7 +38,7 @@ public class DatabaseTest {
     }
     
     @Test
-    public void dataBaseIsCreated() throws ClassNotFoundException{
+    public void dataBaseIsCreated() throws ClassNotFoundException, SQLException{
         db.init();
         boolean exists = false;
         
@@ -51,6 +51,7 @@ public class DatabaseTest {
             if(rs.next()){
                 exists = true;
             }
+            conn.close();
         } catch(SQLException e){
             System.out.println(e.getMessage());
         }

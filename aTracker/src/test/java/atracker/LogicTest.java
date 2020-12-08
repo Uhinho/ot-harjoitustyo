@@ -7,6 +7,7 @@ package atracker;
 
 import database.Database;
 import java.sql.SQLException;
+import logic.Scraper;
 import logic.UiLogic;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,6 +23,7 @@ import static org.junit.Assert.*;
 public class LogicTest {
     UiLogic l = new UiLogic();
     Database db = new Database();
+    Scraper scr = new Scraper();
     
     public LogicTest() {
     }
@@ -44,22 +46,40 @@ public class LogicTest {
 
     @Test
     public void avgPriceTest() throws SQLException {
+        db.insertToMainTable("test", "testpart", "testaddress", 100, 50, 1000);
+        db.insertToMainTable("test", "testpart", "testaddress", 100, 50, 1000);
         
-        
-        db.insertToMainTable("test", "test", "test", 1000, 500, 1950);
-        db.insertToMainTable("test", "test", "test", 1000, 500, 1950);
-        double avg = l.getAvgPrice("test");
+        double avg = l.getAvgPrice("test", "");
         
         db.createStatement("DELETE FROM apartments WHERE city = 'test'");
         db.createStatement("DELETE FROM results WHERE city = 'test'");
+
+        assertEquals(2.0, avg, 0.01);
         
-        assertEquals(2.0, avg, 0.001);
+        
     }
     
     @Test
     public void getResultsAddsDataToDb() throws SQLException {
-        l.getResults("Raahe");
+        boolean exists = false;
+        if (db.cityExists("apartments", "raahe")) {
+            exists = true;
+            db.createStatement("DELETE FROM apartments WHERE city LIKE '%Raahe%'");
+            db.createStatement("DELETE FROM results WHERE city LIKE '%Raahe%'");
+        }
+        assertFalse(db.cityExists("apartments", "Raahe"));
+        
+        scr.getResults("Raahe");
+        
         assertTrue(db.cityExists("apartments", "Raahe"));
-        db.createStatement("DELETE FROM apartments WHERE city LIKE '%Raahe%'");
+        
+        if (!exists) {
+            db.createStatement("DELETE FROM apartments WHERE city LIKE '%Raahe%'");
+            db.createStatement("DELETE FROM results WHERE city LIKE '%Raahe%'");
+            
+        }
+        
+       
+        
     }
 }
