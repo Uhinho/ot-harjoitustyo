@@ -11,7 +11,7 @@ Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asun
 
 [Arkkitehtuuri](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Arkkitehtuuri.md)
 
-[Release](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/viikko5)
+[Releaset](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Releaset.md)
 
 ## Komentorivi
 
