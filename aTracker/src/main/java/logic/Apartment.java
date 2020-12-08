@@ -3,6 +3,7 @@ package logic;
 
 import java.text.DecimalFormat;
 
+
 public class Apartment {
     private String city;
     private String part;
@@ -10,6 +11,17 @@ public class Apartment {
     private double price;
     private double size;
     private int yearBuilt;
+    
+    /**
+     *Yksittäisen asuntoilmoituksen olio.
+     * 
+     *     * @param city   kaupunki
+     * @param part   kaupunginosa
+     * @param address    tarkka osoite
+     * @param price  hinta euroina
+     * @param size   koko neliömetreinä
+     * @param yearBuilt  rakennusvuosi
+    */ 
 
     public Apartment(String city, String part, String address, double price, double size, int yearBuilt) {
         this.city = city;

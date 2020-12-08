@@ -13,6 +13,13 @@ public class Scraper {
     
     
     public Database db = new Database();
+    
+   /** Metodi hakee html-muotoisena etuovi.com kaupunkihaun sisällön ja parsii yksittäiset ilmoitukset 
+    * Apartment-luokan vaatiman datan mukaisina SQLite tietokantaan.
+    *
+    *@param search  Käyttäjän antama syöte (kaupungin nimi)
+    *@see database.Database#insertToMainTable(String, String, String, double, double, int)
+    */
         
     public void getResults(String search) throws SQLException {
 
@@ -103,6 +110,14 @@ public class Scraper {
             }
         }
     }
+    
+    
+   /**
+    * Metodi palauttaa annetun url:n HTML dokumenttina
+    *
+    *@param url www-sivun osoite
+    *@return sivun HTML-dokumentti
+    */
     
     private Document getPage(String url) {
         

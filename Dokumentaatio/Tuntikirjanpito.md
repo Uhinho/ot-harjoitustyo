@@ -9,6 +9,7 @@
 | 1.12.2020    | 10     | Käyttöliittymän ja toiminnallisuuksien päivitystä. Release ja testikattavuus. Reposition README ja muu dokumentaatio|
 | 5.12.2020    | 3      | mm. Käyttäjän syötteen ääkkösistä johtuvien bugien selvittelyä              |
 | 7.12.2020    | 4      | Luokkien järjestelyä, kaupunginosa-perusteisen filteröinnin toteutus        |
+| 8.12.2020    | 5      | Viilausta, javadocin aloitus                                                |
 |              |        |                                                                             |
 |              |        |                                                                             |
 |              |        |                                                                             |
@@ -16,5 +17,4 @@
 |              |        |                                                                             |
 |              |        |                                                                             |
 |              |        |                                                                             |
-|              |        |                                                                             |
-| Tunnit yht.  | 45     |                                                                             |
+| Tunnit yht.  | 50     |                                                                             |
