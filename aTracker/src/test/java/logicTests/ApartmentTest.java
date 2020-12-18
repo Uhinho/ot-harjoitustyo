@@ -1,5 +1,5 @@
 
-package atracker;
+package logicTests;
 
 import logic.Apartment;
 import org.junit.After;
@@ -10,9 +10,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-public class apartmentTest {
+public class ApartmentTest {
     
-    public apartmentTest() {
+    public ApartmentTest() {
     }
     
     @BeforeClass

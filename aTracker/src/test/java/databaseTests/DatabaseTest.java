@@ -1,4 +1,4 @@
-package atracker;
+package databaseTests;
 
 import database.Database;
 import java.sql.Connection;
@@ -17,7 +17,8 @@ import static org.junit.Assert.*;
 public class DatabaseTest {
     Database db = new Database();
     
-    public DatabaseTest() {   
+    public DatabaseTest() { 
+        
     }
     
     @BeforeClass
@@ -29,7 +30,8 @@ public class DatabaseTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws ClassNotFoundException, SQLException {
+        db.init();
     }
     
     @After
@@ -50,13 +52,11 @@ public class DatabaseTest {
             if(rs.next()){
                 exists = true;
             }
-            conn.close();
         } catch(SQLException e){
             System.out.println(e.getMessage());
+        } finally {
+            conn.close();
         }
-        
-        String sql = "SELECT name FROM sqlite_master WHERE type='table' AND name='apartments";
-        
         
         assertTrue(exists);
     }

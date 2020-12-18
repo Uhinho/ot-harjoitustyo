@@ -40,7 +40,6 @@ public class Scraper {
                 String url = "https://www.etuovi.com/myytavat-asunnot/" + search.replace("ä", "a").replace("ö", "o").replace("å", "a");
 
                 Document document = this.getPage(url);
-                int counter = 0;
                 Elements pageNums = document.getElementsByClass(pageNumberDiv); // How many pages of listings are on the site
                 int lastpage = Integer.valueOf(pageNums.last().text().trim()); // last page number
 
@@ -91,16 +90,12 @@ public class Scraper {
                             part = spliced[1].trim();
                             city = spliced[2].trim();   
                         }
-                        counter++;
-                        if (counter % 50 == 0) {
-                            System.out.println("Collecting data... " + counter + " listings already fetched!");
-                        }
 
                         if (city.isBlank()) {
                             continue;
                         }
 
-                        db.insertToMainTable(search, part, address, price, size, yearBuilt);
+                        db.insertToMainTable(search, part, street, price, size, yearBuilt);
                         
                     }
                 }

@@ -17,7 +17,7 @@ public class Database {
         this.created = false;
     }
     
-    private Connection connect() {
+    private Connection connect() throws SQLException {
         Connection conn = null;
         
         try {
@@ -108,10 +108,10 @@ public class Database {
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             stmt.execute(statement);
-            conn.close();   
+            conn.close();
         } catch (Exception e) {
             System.out.println(e.getClass().getName() + ": " + e.getMessage());
-        }  
+        }
     }
     
     public ArrayList<Apartment> getCityFromDb(String city) throws SQLException {

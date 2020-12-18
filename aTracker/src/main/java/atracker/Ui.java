@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -18,6 +19,7 @@ public class Ui extends UiLogic {
     private UiLogic logic;
     private Scraper scraper;
     private List<String> commands;
+    private Database db;
     
     public Ui() {
         this.scanner = new Scanner(System.in);
@@ -28,11 +30,11 @@ public class Ui extends UiLogic {
                                 "3. Clean search history", 
                                 "0. Exit"};
         this.commands = Arrays.asList(commands);
+        this.db = new Database();
     }
     
     public void start() throws ClassNotFoundException, SQLException, IOException {
         
-        Database db = new Database();
         db.init();
         System.out.println("WELCOME TO THE APARTMENT TRACKER \n");
         
@@ -67,12 +69,13 @@ public class Ui extends UiLogic {
         } else {
             switch (command) {
                 case 1:
-                    if (this.getYorN("Do you want to filter by part of town?")) {
+                    if (this.getYorN("Do you want to filter by part of town")) {
                         this.includePart();
                     } else {
                         String city = this.userCityInput(1);
+                        System.out.println("Getting results...");
                         scraper.getResults(city);
-                        logic.printAvgPrice(city, "");  
+                        this.printAvgPrice(city, "");  
                     }
                     
                     break;
@@ -105,11 +108,12 @@ public class Ui extends UiLogic {
         String c = this.userCityInput(1); 
         String p = this.userCityInput(2);
         if (!c.isEmpty() || !p.isEmpty()) {
+            System.out.println("Getting results...");
             if (!db.cityExists("results", c)) {
                 this.scraper.getResults(c);
                 this.logic.getAvgPrice(c, "");
             }
-            this.logic.printAvgPrice(c, p);
+            this.printAvgPrice(c, p);
         }
     }
         
@@ -149,9 +153,21 @@ public class Ui extends UiLogic {
         } else {
             return null;
         }
-        
-        
-    }    
+    }
+    
+    public void printAvgPrice(String city, String part) throws SQLException {
+        if (db.cityExists("apartments", city)) {
+            DecimalFormat df = new DecimalFormat("#.##");
+            String print;
+            if (part.isBlank()) {
+                print = "\nAVERAGE PRICE FOR " + city + ": " + df.format(this.getAvgPrice(city, part)) + "€";
+            } else {
+                print = "\nAVERAGE PRICE FOR " + city + ", " + part + ": " + df.format(this.getAvgPrice(city, part)) + "€";
+            }
+            
+            System.out.println(print);
+        }
+    }
     
    
 }

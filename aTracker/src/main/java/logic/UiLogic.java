@@ -37,30 +37,19 @@ public class UiLogic {
         }
         
         avg = sumOfPrice / sumOfM;
-        if (!db.cityExists("results", city)) {
-            db.insertToResultTable(city, avg);
+        if (part.isBlank()) {
+            if (!db.cityExists("results", city)) {
+                db.insertToResultTable(city, avg);
+            }
+        } else {
+            if (!db.cityExists("results", city + "," + part)) {
+                db.insertToResultTable(city + "," + part, avg);
+            }
         }
-              
+        
         return avg;
     }
     
-    public void printAvgPrice(String city, String part) throws SQLException {
-        if (db.cityExists("apartments", city)) {
-            DecimalFormat df = new DecimalFormat("#.##");
-            String print;
-            if (part.isBlank()) {
-                print = "\nAVERAGE PRICE FOR " + city + ": " + df.format(this.getAvgPrice(city, part)) + "€";
-            } else {
-                print = "\nAVERAGE PRICE FOR " + city + ", " + part + ": " + df.format(this.getAvgPrice(city, part)) + "€";
-            }
-            
-            System.out.println(print);
-        }
-    }
     
-    
-    
-    
-    
-    
+
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atracker;
+package logicTests;
 
 import database.Database;
 import java.sql.SQLException;
@@ -55,18 +55,17 @@ public class LogicTest {
         db.createStatement("DELETE FROM results WHERE city = 'test'");
 
         assertEquals(2.0, avg, 0.01);
-        
-        
     }
     
     @Test
     public void getResultsAddsDataToDb() throws SQLException {
         boolean exists = false;
-        if (db.cityExists("apartments", "raahe")) {
+        if (db.cityExists("apartments", "Raahe")) {
             exists = true;
             db.createStatement("DELETE FROM apartments WHERE city LIKE '%Raahe%'");
             db.createStatement("DELETE FROM results WHERE city LIKE '%Raahe%'");
         }
+        
         assertFalse(db.cityExists("apartments", "Raahe"));
         
         scr.getResults("Raahe");
@@ -76,7 +75,6 @@ public class LogicTest {
         if (!exists) {
             db.createStatement("DELETE FROM apartments WHERE city LIKE '%Raahe%'");
             db.createStatement("DELETE FROM results WHERE city LIKE '%Raahe%'");
-            
         }
         
        
