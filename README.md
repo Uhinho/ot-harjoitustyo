@@ -19,10 +19,15 @@ Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asun
 ## Komentorivi
 
 ### Testaus
-Testit voidaan suorittaa repositorion kansiossa aTracker
+Komennot suoritetaan repositorion kansiossa aTracker
 
 Testit suoritetaan komennolla
 > mvn test
+
+Suoritettava jar-tiedosto luodaan komennolla
+> mvn package
+
+jar tiedosto luodaan kansioon /target
 
 Testikattavuusraportin luomisessa käytetään jacocoa. Raportti luodaan komennolla
 > mvn jacoco:report
@@ -31,9 +36,6 @@ Jacoco luo selaimella avattavan html-tiedoston, joka löytyy hakemistosta  *targ
 
 Checkstyle raportin voit luoda komennolla
 > mvn jxr:jxr checkstyle:checkstyle
-
-Ladattavan releasen voi käynnistää komentoriviltä
-> java -jar aTracker.jar
 
 Javadoc-dokumentin luominen
 > mvn javadoc:javadoc

@@ -7,4 +7,4 @@ Lataa .jar tiedosto ja suorita komennolla
 
 [Viikko 6](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/1.1)
 
-[Lopullinen](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/v1.0-loppu)
+[Lopullinen](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/final)

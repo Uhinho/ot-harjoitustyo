@@ -10,11 +10,6 @@
 | 5.12.2020    | 3      | mm. Käyttäjän syötteen ääkkösistä johtuvien bugien selvittelyä              |
 | 7.12.2020    | 4      | Luokkien järjestelyä, kaupunginosa-perusteisen filteröinnin toteutus        |
 | 8.12.2020    | 5      | Viilausta, javadocin aloitus                                                |
-|              |        |                                                                             |
-|              |        |                                                                             |
-|              |        |                                                                             |
-|              |        |                                                                             |
-|              |        |                                                                             |
-|              |        |                                                                             |
-|              |        |                                                                             |
+| 16.12.2020   | 2      | Dokumentointia                                                              |
+| 20.12.2020   | 8      | Dokumentointia ja bugien selvittelyä                                        |
 | Tunnit yht.  | 50     |                                                                             |

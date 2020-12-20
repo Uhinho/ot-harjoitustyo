@@ -1,9 +1,9 @@
 ## Käyttöohje
 
-Lataa ohjelman viimeisimmän releasen [jar](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/v1.0-loppu) tiedosto. 
+Lataa ohjelman viimeisimmän releasen [jar](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/final) tiedosto. 
 
 Käynnistä ohjelma
-> java -jar aTracker-final.jar
+> java -jar aTracker.jar
 
 Ohjelman päävalikossa käyttäjällä on mahdollisuus
 
