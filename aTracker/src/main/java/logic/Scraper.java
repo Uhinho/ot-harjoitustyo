@@ -112,7 +112,7 @@ public class Scraper {
     *
     *@param url www-sivun osoite
     *@return sivun HTML-dokumentti
-    */
+    **/
     
     private Document getPage(String url) {
         
@@ -123,7 +123,6 @@ public class Scraper {
             document = Jsoup.connect(url).get(); // Connect to the url
 
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
 

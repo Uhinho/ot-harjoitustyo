@@ -5,6 +5,7 @@ import logic.Apartment;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Database {
     
@@ -136,24 +137,28 @@ public class Database {
         return list;
     }
     
-    public void printResults() throws SQLException {
+    public ArrayList<String> getResultsList() throws SQLException {
         String sql = "SELECT * FROM results ORDER BY city";
         DecimalFormat df = new DecimalFormat("#.##");
+        ArrayList<String> results = new ArrayList<>();
         
         try {
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
                   
-            System.out.println("\nYour previous searches:\n");
+            
             while (rs.next()) {
-                System.out.println(rs.getString(2) + ": " + df.format(rs.getDouble(3)) + " €/m2");
+                results.add(rs.getString(2) + ": " + df.format(rs.getDouble(3)) + " €/m2");
             }
             conn.close();
                 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-        }  
+        }
+        
+        return results;
+        
     }
     
     public boolean cityExists(String table, String city) {
@@ -195,5 +200,7 @@ public class Database {
         
         return false;
     }
+    
+    
         
 }

@@ -18,7 +18,6 @@ public class DatabaseTest {
     Database db = new Database();
     
     public DatabaseTest() { 
-        
     }
     
     @BeforeClass
@@ -43,7 +42,7 @@ public class DatabaseTest {
         db.init();
         boolean exists = false;
         
-       Connection conn = null;
+        Connection conn = null;
         
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:data.db");
@@ -61,5 +60,16 @@ public class DatabaseTest {
         assertTrue(exists);
     }
     
+    @Test
+    public void isEmptyTable() throws ClassNotFoundException, SQLException {
+        db.init();
+        
+        db.insertToMainTable("test", "test", "test", 0, 0, 0);
+        boolean empty = db.emptyTable("apartments");
+        db.createStatement("DELETE FROM apartments WHERE city = 'test'");
+        
+        assertFalse(empty);
+    }
     
+  
 }

@@ -8,9 +8,11 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import logic.Apartment;
 import logic.Scraper;
 
 
@@ -27,7 +29,7 @@ public class Ui extends UiLogic {
         this.scraper = new Scraper();
         String[] commands = {   "1. New Search" , 
                                 "2. Previous searches", 
-                                "3. Clean search history", 
+                                "3. Clean search history",
                                 "0. Exit"};
         this.commands = Arrays.asList(commands);
         this.db = new Database();
@@ -81,7 +83,7 @@ public class Ui extends UiLogic {
                     break;
                 case 2:
                     if (!db.emptyTable("results")) {
-                        db.printResults();
+                        this.printResults();
                     } else {
                         System.out.println("No previous searches...");
                     }
@@ -114,7 +116,18 @@ public class Ui extends UiLogic {
                 this.logic.getAvgPrice(c, "");
             }
             this.printAvgPrice(c, p);
+            this.printUnderAvg(c, p);
         }
+    }
+    
+    private void printUnderAvg(String city, String part) throws SQLException {
+        if (this.getYorN("Want to see the listings under average price in selected part of town?")) {
+            ArrayList<Apartment> apps = logic.getListingsUnderAvg(city, part);
+            
+            for (Apartment ap: apps) {
+                System.out.println(ap.toString());
+            }
+        }  
     }
         
     private boolean getYorN(String question) {
@@ -160,13 +173,20 @@ public class Ui extends UiLogic {
             DecimalFormat df = new DecimalFormat("#.##");
             String print;
             if (part.isBlank()) {
-                print = "\nAVERAGE PRICE FOR " + city + ": " + df.format(this.getAvgPrice(city, part)) + "€";
+                print = "\nAVERAGE PRICE FOR " + city + ": " + df.format(this.logic.getAvgPrice(city, part)) + "€";
             } else {
-                print = "\nAVERAGE PRICE FOR " + city + ", " + part + ": " + df.format(this.getAvgPrice(city, part)) + "€";
+                print = "\nAVERAGE PRICE FOR " + city + ", " + part + ": " + df.format(this.logic.getAvgPrice(city, part)) + "€";
             }
             
             System.out.println(print);
         }
+    }
+    
+    private void printResults() throws SQLException {
+        System.out.println("\nYour previous searches:\n");
+        
+        db.getResultsList().stream()
+                    .forEach(s -> System.out.println(s));
     }
     
    

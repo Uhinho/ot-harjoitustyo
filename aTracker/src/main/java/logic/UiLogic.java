@@ -3,7 +3,7 @@ package logic;
 
 import database.Database;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,8 +46,23 @@ public class UiLogic {
                 db.insertToResultTable(city + "," + part, avg);
             }
         }
-        
         return avg;
+    }
+    
+    
+    public ArrayList<Apartment> getListingsUnderAvg(String city, String part) throws SQLException {
+        ArrayList<Apartment> apps = db.getCityFromDb(city);
+        double avg = this.getAvgPrice(city, part);
+        ArrayList<Apartment> underAvg = new ArrayList<>();
+        
+        for (Apartment ap: apps) {
+            double pricePerM = ap.getPrice() / ap.getSize();
+            if (ap.getPart().equals(part) && pricePerM < avg) {        
+                underAvg.add(ap);
+            }
+        }
+
+        return underAvg;
     }
     
     

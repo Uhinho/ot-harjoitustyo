@@ -76,8 +76,19 @@ public class LogicTest {
             db.createStatement("DELETE FROM apartments WHERE city LIKE '%Raahe%'");
             db.createStatement("DELETE FROM results WHERE city LIKE '%Raahe%'");
         }
+         
+    }
+    
+    @Test
+    public void printResultsUnderAvg() throws SQLException {
+        db.insertToMainTable("test", "testpart", "testaddress", 100, 50, 1000);
+        db.insertToMainTable("test", "testpart", "testaddress", 100, 50, 1000);
+        db.insertToMainTable("test", "testpart", "underavgaddress", 100, 70, 1000);
         
-       
+        int size = l.getListingsUnderAvg("test", "testpart").size();
+        db.createStatement("DELETE FROM apartments WHERE city = 'test'");
+        db.createStatement("DELETE FROM results WHERE city = 'test'");
         
+        assertEquals(1, size);
     }
 }

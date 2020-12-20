@@ -21,7 +21,7 @@ public class Apartment {
      * @param price  hinta euroina
      * @param size   koko neliömetreinä
      * @param yearBuilt  rakennusvuosi
-    */ 
+    **/ 
 
     public Apartment(String city, String part, String address, double price, double size, int yearBuilt) {
         this.city = city;
