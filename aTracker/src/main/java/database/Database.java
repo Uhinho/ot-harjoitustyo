@@ -52,7 +52,6 @@ public class Database {
             Statement stmt = conn.createStatement();
             stmt.execute(mainTable);
             stmt.execute(resultTable);
-            stmt.close();
             conn.close();
         } catch (Exception e) {
             System.out.println("Database init not successful");
