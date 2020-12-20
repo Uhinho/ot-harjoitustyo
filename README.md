@@ -19,6 +19,7 @@ Käyttäjä voi hakea kaupungin- tai kaupunginosan nimen perusteella alueen asun
 ## Komentorivi
 
 ### Testaus
+Testit voidaan suorittaa repositorion kansiossa aTracker
 
 Testit suoritetaan komennolla
 > mvn test

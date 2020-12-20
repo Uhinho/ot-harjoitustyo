@@ -3,7 +3,7 @@
 ## Rakenne
 Ohjelman rakenne on kolmikerroksinen: 
 
-![](/Kuvat/kerros.png)
+![](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Kuvat/kerros.png)
 
 ## Käyttöliittymä
 Tekstikäyttöliittymä, jossa käyttäjä voi 
@@ -15,7 +15,7 @@ Tekstikäyttöliittymä, jossa käyttäjä voi
 ## Sovelluslogiikka
 Sovelluksen datamallin muodostavat luokat Database ja Apartment, jotka kuvaavat tietokantaa ja yksittäisen asuntoilmoituksen yksityiskohtia.
 
-![](/Kuvat/luokkakaavio.png)
+![](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Kuvat/luokkakaavio.png)
 
 
 
@@ -28,7 +28,7 @@ Sovelluksen datamallin muodostavat luokat Database ja Apartment, jotka kuvaavat 
 Kun käyttäjä tekee haun ja antaa syötteenä kaupungin nimen, Scraper-luokka tarkistaa ensin onko kyseinen kaupunki jo tietokannassa.
 Mikäli kaupunkia ei löydy jo tietokannasta, scraper käy silmukassa läpi Etuovi.comin kyseisen kaupungin listaukset ja lisää tiedot "apartments"-nimiseen SQL pöytään.
 
-![](/Kuvat/datanlisaaminen.png)
+![](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Kuvat/datanlisaaminen.png)
 
 ### Keskimääräisen neliöhinnan palautus
 
@@ -36,4 +36,4 @@ Jokaisen haun päätteeksi käyttöliittymä tulostaa keskimääräisen neliöhi
 UiLogic-luokan getAvgPrice-metodin sisällä kädään lista silmukkana läpi ja palautetaan neliöhintakeskiarvo.
 Kun keskiarvo on laskettu, lisätään tietokannan "results"-pöytään kyseisen haun kaupunki ja neliöhinta hakuhistorian ylläpitämiseksi.
 
-![](/Kuvat/keskiarvo.png)
+![](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Kuvat/keskiarvo.png)
