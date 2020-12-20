@@ -49,12 +49,13 @@ public class Database {
             
             Class.forName("org.sqlite.JDBC");
             Connection conn = this.connect();
+            Statement stmt = conn.createStatement();
+            stmt.execute(mainTable);
+            stmt.execute(resultTable);
             conn.close();
-            this.createStatement(mainTable);
-            this.createStatement(resultTable);
         } catch (Exception e) {
             System.out.println("Database init not successful");
-        }   
+        } 
     }
     
     public void dropTable(String tablename) throws SQLException {
