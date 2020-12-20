@@ -12,8 +12,7 @@ public class Database {
     private String url;
     private boolean created;
     
-    public Database() throws ClassNotFoundException {
-        Class.forName("org.sqlite.JDBC");
+    public Database() {
         this.url = "jdbc:sqlite:data.db";
         this.created = false;
     }
@@ -47,10 +46,11 @@ public class Database {
                     + "mprice REAL"
                     + ");";
         try {
+            
+            Class.forName("org.sqlite.JDBC");
             Connection conn = this.connect();
             Statement stmt = conn.createStatement();
             stmt.execute(mainTable);
-            stmt.close();
             stmt.execute(resultTable);
             stmt.close();
             conn.close();
