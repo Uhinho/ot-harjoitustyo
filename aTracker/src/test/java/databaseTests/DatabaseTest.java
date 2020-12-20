@@ -52,10 +52,9 @@ public class DatabaseTest {
             if(rs.next()){
                 exists = true;
             }
+            conn.close();
         } catch(SQLException e){
             System.out.println(e.getMessage());
-        } finally {
-            conn.close();
         }
         
         assertTrue(exists);
