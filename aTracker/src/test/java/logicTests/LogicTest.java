@@ -37,7 +37,8 @@ public class LogicTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws ClassNotFoundException, SQLException {
+        db.init();
     }
     
     @After

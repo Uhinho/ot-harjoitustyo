@@ -73,7 +73,8 @@ public class DatabaseTest {
     }
     
     @Test
-    public void getResultListReturnsList() throws SQLException {
+    public void getResultListReturnsList() throws SQLException, ClassNotFoundException {
+        db.init();
         db.insertToResultTable("test1", 100);
         db.insertToResultTable("test2", 150);
         
