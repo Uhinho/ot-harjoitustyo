@@ -41,7 +41,9 @@ public class LogicTest {
     }
     
     @After
-    public void tearDown() {
+    public void tearDown() throws SQLException {
+        db.createStatement("DELETE FROM results WHERE city LIKE '%test%'");
+        db.createStatement("DELETE FROM apartments WHERE city LIKE '%test%'");
     }
 
     @Test

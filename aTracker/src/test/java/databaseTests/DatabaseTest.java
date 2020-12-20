@@ -34,7 +34,8 @@ public class DatabaseTest {
     }
     
     @After
-    public void tearDown() {
+    public void tearDown() throws SQLException {
+        db.createStatement("DELETE FROM results WHERE city LIKE '%test%'");
     }
     
     @Test
@@ -69,6 +70,17 @@ public class DatabaseTest {
         db.createStatement("DELETE FROM apartments WHERE city = 'test'");
         
         assertFalse(empty);
+    }
+    
+    @Test
+    public void getResultListReturnsList() throws SQLException {
+        db.insertToResultTable("test1", 100);
+        db.insertToResultTable("test2", 150);
+        
+        assertTrue(db.getResultsList().contains("test2: 150 €/m2"));
+        
+        
+        
     }
     
   
