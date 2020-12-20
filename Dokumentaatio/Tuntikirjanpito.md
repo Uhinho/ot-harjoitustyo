@@ -12,4 +12,4 @@
 | 8.12.2020    | 5      | Viilausta, javadocin aloitus                                                |
 | 16.12.2020   | 2      | Dokumentointia                                                              |
 | 20.12.2020   | 8      | Dokumentointia ja bugien selvittelyä                                        |
-| Tunnit yht.  | 50     |                                                                             |
+| Tunnit yht.  | 60     |                                                                             |
