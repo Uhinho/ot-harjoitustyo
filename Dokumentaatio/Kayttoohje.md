@@ -1,10 +1,5 @@
 ## Käyttöohje
 
-Lataa ohjelman viimeisimmän releasen [jar](https://github.com/Uhinho/ot-harjoitustyo/releases/tag/final) tiedosto. 
-
-Käynnistä ohjelma
-> java -jar aTracker.jar
-
 Ohjelman päävalikossa käyttäjällä on mahdollisuus
 
 1. Tehdä uusi haku

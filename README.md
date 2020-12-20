@@ -45,4 +45,4 @@ Ensimmäinen versio toimii yksinkertaisella tekstikäyttöliittymällä.
 Ohjelman käynnistyttyä ohjelma luo juurikansioon SQLite-tietokannan data.db
 Käyttäjän syötettyä kaupungin nimen, ohjelma lisää löydetyt asuntoilmoitukset SQLite-tietokantaan ja palauttaa tietokannasta lasketun keskimääräisen neliöhinnan.
 
-
+Githubiin ladattu release vaikuttaa aiheuttavan SQL-virheen tietokannan luontivaiheessa. Kyseistä virhettä ei kuitenkaan havaittu kun sama .jar tiedosto suoritettiin paketoinnin jälkeen /target kansiosta. Syytä tälle ei ole löytynyt.

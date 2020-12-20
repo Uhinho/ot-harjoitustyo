@@ -20,9 +20,6 @@ Kun käyttöliittymän rakentava luokka on jätetty pois testauksesta, automatis
 ## Järjestelmätestaus
 
 aTracker-sovelluksen järjestelmätestaus on suoritettu manuaalisesti.
+Sovellusta on mm. yritetty kaataa epäloogisilla syötteillä. 
 
-### Asennus
 
-Ohjelma on ladattu ja suoritettu [käyttöohjeen](https://github.com/Uhinho/ot-harjoitustyo/blob/master/Dokumentaatio/Kayttoohje.md) mukaisesti ssh-yhteydellä oppilaitoksen koneella.
-
-Sovellusta on manuaalisesti yritetty kaataa erilaisilla virheellisillä syötteillä.
