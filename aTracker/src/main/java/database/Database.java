@@ -5,7 +5,6 @@ import logic.Apartment;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Database {
     
@@ -48,10 +47,8 @@ public class Database {
                     + ");";
         try {
             Class.forName("org.sqlite.JDBC");
-            conn = this.connect();
             this.createStatement(mainTable);
             this.createStatement(resultTable);
-            conn.close();
         } catch (Exception e) {
             System.out.println("Database init not successful");
         }   
