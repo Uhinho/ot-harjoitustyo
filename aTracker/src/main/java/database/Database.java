@@ -53,7 +53,7 @@ public class Database {
             this.createStatement(resultTable);
             conn.close();
         } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.out.println("Database init not successful");
         }   
     }
     
@@ -81,7 +81,7 @@ public class Database {
             conn.close();
             
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Data insert failed");
         }   
         
     }
@@ -98,7 +98,7 @@ public class Database {
             conn.close();
             
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Data insert failed");
         }
         
     }
