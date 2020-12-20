@@ -46,7 +46,10 @@ public class Database {
                     + "mprice REAL"
                     + ");";
         try {
+            
             Class.forName("org.sqlite.JDBC");
+            Connection conn = this.connect();
+            conn.close();
             this.createStatement(mainTable);
             this.createStatement(resultTable);
         } catch (Exception e) {
